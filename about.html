@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — OneStop Digital Growth Agency</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="index.html">One<span>Stop</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html" class="active">About</a>
+    <button class="cart-nav-btn" onclick="openCart()" title="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Cart
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html"     onclick="closeMenu()">Home</a>
+  <a href="services.html"  onclick="closeMenu()">Services</a>
+  <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
+  <a href="about.html"     onclick="closeMenu()">About</a>
+  <a href="contact.html"   onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- ─── ABOUT ────────────────────────────────────── -->
+<section>
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-img">
+        <div class="about-img-bg"></div>
+        <span style="position:relative;z-index:1;font-size:5rem">👤</span>
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">3+</div>
+        <div class="about-badge-text">Years Growing<br>Brands</div>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <div class="section-label">About Me</div>
+      <h2 id="aboutTitle">Hi, I'm Deepu.</h2>
+      <p id="aboutP1">I started this because I saw creators and businesses struggling to grow online without the right support.</p>
+      <p id="aboutP2">This is not just a service — it's a growth partnership. I help people build their presence, create content that works, and turn ideas into real results.</p>
+      <p style="color:var(--accent);font-weight:500;font-style:italic">"If you grow, I grow."</p>
+      <div class="about-values">
+        <span class="value-tag">🎯 Results-First</span>
+        <span class="value-tag">⚡ Fast Execution</span>
+        <span class="value-tag">🤝 Personalized</span>
+        <span class="value-tag">📈 Growth-Focused</span>
+        <span class="value-tag">💡 Creative</span>
+        <span class="value-tag">🧩 Strategic</span>
+      </div>
+      <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a class="btn-primary" href="contact.html">Work With Me →</a>
+        <a class="btn-ghost"   href="services.html">See Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY CHOOSE ────────────────────────────────── -->
+<section class="why-section">
+  <div class="section-head center">
+    <div class="section-label">My Approach</div>
+    <h2 class="section-title">How I work with you</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-num">01</div>
+      <div><h4>Discovery Call</h4><p>We start with a conversation about your goals, your audience, and where you want to be.</p></div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">02</div>
+      <div><h4>Custom Strategy</h4><p>I build a plan tailored specifically to your brand — no cookie-cutter packages.</p></div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">03</div>
+      <div><h4>Execution</h4><p>Fast, quality delivery. You stay in the loop at every step of the process.</p></div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">04</div>
+      <div><h4>Ongoing Growth</h4><p>We track results and keep refining. This is a partnership, not a transaction.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="section-label">Ready?</div>
+  <h2 class="section-title">Let's build something real together.</h2>
+  <p>One conversation is all it takes to get started.</p>
+  <a class="btn-primary" href="contact.html">Get in Touch →</a>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────── -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">One<span>Stop</span></div>
+    <p class="footer-tagline">Your complete digital growth partner. From websites to content strategy — we help you grow.</p>
+    <div style="display:flex;gap:0.75rem">
+      <a href="#" style="color:var(--muted);font-size:1.2rem;text-decoration:none" title="Instagram">📸</a>
+      <a href="#" style="color:var(--muted);font-size:1.2rem;text-decoration:none" title="YouTube">📹</a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Pages</h4>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-col">
+    <h4>Services</h4>
+    <a href="services.html">Website Setup</a>
+    <a href="services.html">Instagram Growth</a>
+    <a href="services.html">Video Editing</a>
+    <a href="contact.html">Custom Plans</a>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <a href="contact.html">Get in Touch</a>
+    <a href="#">Instagram</a>
+    <a href="#">Email Us</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 <span>OneStop</span>. Built for growth.</span>
+  <span>Made with ❤️ by Deepu</span>
+</div>
+
+<!-- ─── CART DRAWER ───────────────────────────────── -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-head">
+    <div class="cart-drawer-title">Your Cart <span id="cartItemCount">0 items</span></div>
+    <button class="cart-close-btn" onclick="closeCart()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItemsList"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div>
+      <div class="cart-summary">
+        <div class="cart-summary-label">Total</div>
+        <div class="cart-summary-total" id="cartTotal">—</div>
+      </div>
+      <div class="cart-summary-note">Final price confirmed after consultation</div>
+    </div>
+    <button class="btn-checkout" onclick="openCheckout()">Proceed to Checkout</button>
+    <button class="btn-continue-shopping" onclick="closeCart()">Continue Browsing</button>
+  </div>
+</div>
+
+<!-- ─── CHECKOUT MODAL ────────────────────────────── -->
+<div class="checkout-overlay" id="checkoutOverlay">
+  <div class="checkout-box">
+    <div class="checkout-head">
+      <button class="checkout-close" onclick="closeCheckout()">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg>
+      </button>
+      <div class="checkout-step-track">
+        <div class="checkout-step-dot active" id="cdot-1">1</div>
+        <div class="checkout-step-line" id="cline-1"></div>
+        <div class="checkout-step-dot" id="cdot-2">2</div>
+        <div class="checkout-step-line" id="cline-2"></div>
+        <div class="checkout-step-dot" id="cdot-3">3</div>
+      </div>
+      <div class="checkout-step-labels">
+        <div class="checkout-step-lbl active" id="clbl-1">Details</div>
+        <div class="checkout-step-lbl" id="clbl-2">Payment</div>
+        <div class="checkout-step-lbl" id="clbl-3">Confirm</div>
+      </div>
+      <h2 id="coHeadTitle">Your Details</h2>
+      <p id="coHeadSub">Tell us who you are so we can get started.</p>
+    </div>
+    <div class="checkout-body">
+      <div class="checkout-section active" id="co-step-1">
+        <div class="order-summary-mini" id="coOrderSummary"></div>
+        <div class="co-form-row">
+          <div class="co-field"><label>First Name</label><input type="text" id="co-fname" placeholder="Deepu"></div>
+          <div class="co-field"><label>Last Name</label><input type="text" id="co-lname" placeholder="Kumar"></div>
+        </div>
+        <div class="co-field"><label>Email Address</label><input type="email" id="co-email" placeholder="you@example.com"></div>
+        <div class="co-field"><label>Phone Number</label><input type="tel" id="co-phone" placeholder="+91 99999 00000"></div>
+        <div class="co-field"><label>Tell us about your project</label><input type="text" id="co-project" placeholder="Brief description of what you need"></div>
+      </div>
+      <div class="checkout-section" id="co-step-2">
+        <div class="order-summary-mini" id="coOrderSummary2"></div>
+        <div class="co-section-label">Payment Method</div>
+        <div class="payment-methods">
+          <div class="payment-method selected" onclick="selectPayment('card',this)">
+            <div class="payment-method-radio"></div>
+            <div class="payment-method-info"><div class="payment-method-name">Credit / Debit Card</div><div class="payment-method-desc">Visa, Mastercard, RuPay accepted</div></div>
+            <div class="payment-method-logos"><span class="pay-logo">VISA</span><span class="pay-logo">MC</span><span class="pay-logo">RuPay</span></div>
+          </div>
+          <div class="payment-method" onclick="selectPayment('upi',this)">
+            <div class="payment-method-radio"></div>
+            <div class="payment-method-info"><div class="payment-method-name">UPI</div><div class="payment-method-desc">GPay, PhonePe, Paytm, BHIM</div></div>
+            <div class="payment-method-logos"><span class="pay-logo">UPI</span></div>
+          </div>
+          <div class="payment-method" onclick="selectPayment('netbanking',this)">
+            <div class="payment-method-radio"></div>
+            <div class="payment-method-info"><div class="payment-method-name">Net Banking</div><div class="payment-method-desc">All major Indian banks</div></div>
+            <div class="payment-method-logos"><span class="pay-logo">NEFT</span></div>
+          </div>
+        </div>
+        <div class="card-fields visible" id="cardFields">
+          <div class="co-section-label">Card Details</div>
+          <div class="co-field card-number-wrap"><label>Card Number</label><input type="text" id="co-cardnum" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)"><span class="card-brand" id="cardBrand">CARD</span></div>
+          <div class="co-form-row">
+            <div class="co-field"><label>Expiry Date</label><input type="text" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)"></div>
+            <div class="co-field"><label>CVV</label><input type="text" placeholder="CVV" maxlength="4"></div>
+          </div>
+          <div class="co-field"><label>Name on Card</label><input type="text" placeholder="As it appears on card"></div>
+        </div>
+        <div class="upi-field" id="upiField">
+          <div class="co-section-label">UPI Details</div>
+          <div class="co-field"><label>UPI ID</label><input type="text" placeholder="yourname@upi"></div>
+        </div>
+      </div>
+      <div class="checkout-section" id="co-step-3">
+        <div class="order-summary-mini" id="coOrderSummary3"></div>
+        <div class="co-section-label">Confirm Your Order</div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.25rem;font-size:0.875rem;color:var(--muted);line-height:1.7">
+          By placing this order you agree that a 50% advance payment will be collected to begin work, with the remaining 50% due on delivery.
+        </div>
+        <div id="coConfirmDetails" style="margin-top:1.25rem;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.25rem;font-size:0.875rem;"></div>
+      </div>
+      <div class="checkout-section" id="co-success">
+        <div class="checkout-success">
+          <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h2>Order Confirmed!</h2>
+          <p>Thank you for choosing OneStop. We'll send your invoice to your email within 30 minutes.</p>
+          <div class="order-id" id="coOrderId">Order #OS-000000</div>
+          <a class="btn-checkout" href="index.html" style="margin-top:2rem;border-radius:10px;display:inline-block;text-align:center;text-decoration:none">Back to Home</a>
+        </div>
+      </div>
+    </div>
+    <div class="checkout-footer" id="checkoutFooter">
+      <button class="btn-co-back" id="btnCoBack" onclick="coBack()" style="display:none">Back</button>
+      <button class="btn-co-next" id="btnCoNext" onclick="coNext()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ADMIN PANEL ───────────────────────────────── -->
+<div class="admin-panel">
+  <button class="admin-toggle" onclick="openAdmin()" title="Edit Content">⚙️</button>
+</div>
+<div class="admin-modal" id="adminModal">
+  <div class="admin-box">
+    <h2>⚙️ Content Editor</h2>
+    <p>Edit About page content. Changes apply instantly.</p>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchTab('about',event)">About</button>
+    </div>
+    <div class="admin-section active" id="tab-about">
+      <div class="admin-field"><label>Name / Headline</label><input type="text" id="admin-aboutTitle" value="Hi, I'm Deepu."></div>
+      <div class="admin-field"><label>Paragraph 1</label><textarea id="admin-aboutP1" rows="3">I started this because I saw creators and businesses struggling to grow online without the right support.</textarea></div>
+      <div class="admin-field"><label>Paragraph 2</label><textarea id="admin-aboutP2" rows="3">This is not just a service — it's a growth partnership. I help people build their presence, create content that works, and turn ideas into real results.</textarea></div>
+      <div class="admin-actions">
+        <button class="admin-save" onclick="saveAbout()">Save About</button>
+        <button class="admin-close" onclick="closeAdmin()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="success-toast" id="toast">✓ Saved successfully!</div>
+
+<script src="shared.js"></script>
+<script>
+function saveAbout() {
+  document.getElementById('aboutTitle').textContent = document.getElementById('admin-aboutTitle').value;
+  document.getElementById('aboutP1').textContent    = document.getElementById('admin-aboutP1').value;
+  document.getElementById('aboutP2').textContent    = document.getElementById('admin-aboutP2').value;
+  showToast(); closeAdmin();
+}
+</script>
+</body>
+</html>

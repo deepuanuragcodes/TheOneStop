@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneStop — Digital Growth Agency</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="index.html">One<span>Stop</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <button class="cart-nav-btn" onclick="openCart()" title="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Cart
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html"     onclick="closeMenu()">Home</a>
+  <a href="services.html"  onclick="closeMenu()">Services</a>
+  <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
+  <a href="about.html"     onclick="closeMenu()">About</a>
+  <a href="contact.html"   onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Personal Brand Agency</div>
+    <h1>We help creators and<br>businesses <em>grow online</em></h1>
+    <p>From zero to strong digital presence with content, websites, and strategy</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="contact.html">Get Started →</a>
+      <a class="btn-ghost"   href="services.html">View Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Projects Done</div></div>
+      <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Happy Clients</div></div>
+      <div class="stat"><div class="stat-num">3x</div><div class="stat-label">Avg Growth</div></div>
+      <div class="stat"><div class="stat-num">Fast</div><div class="stat-label">Turnaround</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHAT WE DO ───────────────────────────────── -->
+<section class="what-section">
+  <div class="what-grid">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">We don't just deliver services. We build <span style="color:var(--accent)">growth systems.</span></h2>
+      <p class="section-sub">Every brand is different. We create tailored strategies that actually move the needle — not generic packages.</p>
+      <div class="what-points">
+        <div class="what-point reveal">
+          <div class="what-point-icon">🎯</div>
+          <div><h4>Strategy First</h4><p>We understand your goals before executing anything. No guesswork, just clear paths to results.</p></div>
+        </div>
+        <div class="what-point reveal">
+          <div class="what-point-icon">⚡</div>
+          <div><h4>Fast Execution</h4><p>Ideas don't wait. Neither do we. Quick turnaround without compromising on quality.</p></div>
+        </div>
+        <div class="what-point reveal">
+          <div class="what-point-icon">📈</div>
+          <div><h4>Measurable Growth</h4><p>We track what matters. Every action is tied to real metrics you can see and feel.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="what-visual reveal">
+      <div class="what-visual-glow"></div>
+      <p style="font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem;font-weight:600">Client Growth Trend</p>
+      <div class="growth-chart" id="growthChart"></div>
+      <div class="chart-legend"><span>Monthly Performance</span><strong>+240%</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES PREVIEW ──────────────────────────── -->
+<section>
+  <div class="section-head center">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">What we offer</h2>
+    <p class="section-sub">Tailored digital services for creators and growing businesses</p>
+  </div>
+  <div class="services-grid" id="homeServicesGrid"></div>
+  <div style="text-align:center;margin-top:2.5rem">
+    <a class="btn-ghost" href="services.html">See All Services →</a>
+  </div>
+</section>
+
+<!-- ─── WHY CHOOSE ────────────────────────────────── -->
+<section class="why-section">
+  <div class="section-head center">
+    <div class="section-label">Why OneStop</div>
+    <h2 class="section-title">Built different. Built for you.</h2>
+  </div>
+  <div class="why-grid" id="whyGrid"></div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="section-label">Let's Connect</div>
+  <h2 class="section-title">"If you're serious about growing your brand, let's build something real."</h2>
+  <p>One conversation could change everything for your brand.</p>
+  <a class="btn-primary" href="contact.html">Contact Now →</a>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────── -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">One<span>Stop</span></div>
+    <p class="footer-tagline">Your complete digital growth partner. From websites to content strategy — we help you grow.</p>
+    <div style="display:flex;gap:0.75rem">
+      <a href="#" style="color:var(--muted);font-size:1.2rem;text-decoration:none" title="Instagram">📸</a>
+      <a href="#" style="color:var(--muted);font-size:1.2rem;text-decoration:none" title="YouTube">📹</a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Pages</h4>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-col">
+    <h4>Services</h4>
+    <a href="services.html">Website Setup</a>
+    <a href="services.html">Instagram Growth</a>
+    <a href="services.html">Video Editing</a>
+    <a href="contact.html">Custom Plans</a>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <a href="contact.html">Get in Touch</a>
+    <a href="#">Instagram</a>
+    <a href="#">Email Us</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 <span>OneStop</span>. Built for growth.</span>
+  <span>Made with ❤️ by Deepu</span>
+</div>
+
+<!-- ─── CART DRAWER ───────────────────────────────── -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-head">
+    <div class="cart-drawer-title">Your Cart <span id="cartItemCount">0 items</span></div>
+    <button class="cart-close-btn" onclick="closeCart()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItemsList"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div>
+      <div class="cart-summary">
+        <div class="cart-summary-label">Total</div>
+        <div class="cart-summary-total" id="cartTotal">—</div>
+      </div>
+      <div class="cart-summary-note">Final price confirmed after consultation</div>
+    </div>
+    <button class="btn-checkout" onclick="openCheckout()">Proceed to Checkout</button>
+    <button class="btn-continue-shopping" onclick="closeCart()">Continue Browsing</button>
+  </div>
+</div>
+
+<!-- ─── CHECKOUT MODAL ────────────────────────────── -->
+<div class="checkout-overlay" id="checkoutOverlay">
+  <div class="checkout-box">
+    <div class="checkout-head">
+      <button class="checkout-close" onclick="closeCheckout()">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg>
+      </button>
+      <div class="checkout-step-track">
+        <div class="checkout-step-dot active" id="cdot-1">1</div>
+        <div class="checkout-step-line" id="cline-1"></div>
+        <div class="checkout-step-dot" id="cdot-2">2</div>
+        <div class="checkout-step-line" id="cline-2"></div>
+        <div class="checkout-step-dot" id="cdot-3">3</div>
+      </div>
+      <div class="checkout-step-labels">
+        <div class="checkout-step-lbl active" id="clbl-1">Details</div>
+        <div class="checkout-step-lbl" id="clbl-2">Payment</div>
+        <div class="checkout-step-lbl" id="clbl-3">Confirm</div>
+      </div>
+      <h2 id="coHeadTitle">Your Details</h2>
+      <p id="coHeadSub">Tell us who you are so we can get started.</p>
+    </div>
+    <div class="checkout-body">
+      <div class="checkout-section active" id="co-step-1">
+        <div class="order-summary-mini" id="coOrderSummary"></div>
+        <div class="co-form-row">
+          <div class="co-field"><label>First Name</label><input type="text" id="co-fname" placeholder="Deepu"></div>
+          <div class="co-field"><label>Last Name</label><input type="text" id="co-lname" placeholder="Kumar"></div>
+        </div>
+        <div class="co-field"><label>Email Address</label><input type="email" id="co-email" placeholder="you@example.com"></div>
+        <div class="co-field"><label>Phone Number</label><input type="tel" id="co-phone" placeholder="+91 99999 00000"></div>
+        <div class="co-field"><label>Tell us about your project</label><input type="text" id="co-project" placeholder="Brief description of what you need"></div>
+      </div>
+      <div class="checkout-section" id="co-step-2">
+        <div class="order-summary-mini" id="coOrderSummary2"></div>
+        <div class="co-section-label">Payment Method</div>
+        <div class="payment-methods">
+          <div class="payment-method selected" onclick="selectPayment('card',this)">
+            <div class="payment-method-radio"></div>
+            <div class="payment-method-info"><div class="payment-method-name">Credit / Debit Card</div><div class="payment-method-desc">Visa, Mastercard, RuPay accepted</div></div>
+            <div class="payment-method-logos"><span class="pay-logo">VISA</span><span class="pay-logo">MC</span><span class="pay-logo">RuPay</span></div>
+          </div>
+          <div class="payment-method" onclick="selectPayment('upi',this)">
+            <div class="payment-method-radio"></div>
+            <div class="payment-method-info"><div class="payment-method-name">UPI</div><div class="payment-method-desc">GPay, PhonePe, Paytm, BHIM</div></div>
+            <div class="payment-method-logos"><span class="pay-logo">UPI</span></div>
+          </div>
+          <div class="payment-method" onclick="selectPayment('netbanking',this)">
+            <div class="payment-method-radio"></div>
+            <div class="payment-method-info"><div class="payment-method-name">Net Banking</div><div class="payment-method-desc">All major Indian banks</div></div>
+            <div class="payment-method-logos"><span class="pay-logo">NEFT</span></div>
+          </div>
+        </div>
+        <div class="card-fields visible" id="cardFields">
+          <div class="co-section-label">Card Details</div>
+          <div class="co-field card-number-wrap"><label>Card Number</label><input type="text" id="co-cardnum" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)"><span class="card-brand" id="cardBrand">CARD</span></div>
+          <div class="co-form-row">
+            <div class="co-field"><label>Expiry Date</label><input type="text" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)"></div>
+            <div class="co-field"><label>CVV</label><input type="text" placeholder="CVV" maxlength="4"></div>
+          </div>
+          <div class="co-field"><label>Name on Card</label><input type="text" placeholder="As it appears on card"></div>
+        </div>
+        <div class="upi-field" id="upiField">
+          <div class="co-section-label">UPI Details</div>
+          <div class="co-field"><label>UPI ID</label><input type="text" placeholder="yourname@upi"></div>
+        </div>
+      </div>
+      <div class="checkout-section" id="co-step-3">
+        <div class="order-summary-mini" id="coOrderSummary3"></div>
+        <div class="co-section-label">Confirm Your Order</div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.25rem;font-size:0.875rem;color:var(--muted);line-height:1.7">
+          By placing this order you agree that a 50% advance payment will be collected to begin work, with the remaining 50% due on delivery. You will receive a confirmation email within 30 minutes.
+        </div>
+        <div id="coConfirmDetails" style="margin-top:1.25rem;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.25rem;font-size:0.875rem;"></div>
+        <div style="margin-top:1rem;display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--muted)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Secure checkout — Your data is encrypted and never shared
+        </div>
+      </div>
+      <div class="checkout-section" id="co-success">
+        <div class="checkout-success">
+          <div class="success-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2>Order Confirmed!</h2>
+          <p>Thank you for choosing OneStop. We'll send your invoice and project brief to your email within 30 minutes.</p>
+          <div class="order-id" id="coOrderId">Order #OS-000000</div>
+          <a class="btn-checkout" href="index.html" style="margin-top:2rem;border-radius:10px;display:inline-block;text-align:center;text-decoration:none">Back to Home</a>
+        </div>
+      </div>
+    </div>
+    <div class="checkout-footer" id="checkoutFooter">
+      <button class="btn-co-back" id="btnCoBack" onclick="coBack()" style="display:none">Back</button>
+      <button class="btn-co-next" id="btnCoNext" onclick="coNext()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ADMIN PANEL ───────────────────────────────── -->
+<div class="admin-panel">
+  <button class="admin-toggle" onclick="openAdmin()" title="Edit Content">⚙️</button>
+</div>
+<div class="admin-modal" id="adminModal">
+  <div class="admin-box">
+    <h2>⚙️ Content Editor</h2>
+    <p>Update your site content without touching code. Changes apply instantly.</p>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchTab('services',event)">Services</button>
+      <button class="admin-tab"        onclick="switchTab('portfolio',event)">Portfolio</button>
+      <button class="admin-tab"        onclick="switchTab('settings',event)">Settings</button>
+    </div>
+    <div class="admin-section active" id="tab-services">
+      <div id="adminServicesList"></div>
+      <button class="admin-add" onclick="addService()">+ Add New Service</button>
+      <div class="admin-actions">
+        <button class="admin-save" onclick="renderHomeServices();showToast()">Save Services</button>
+        <button class="admin-close" onclick="closeAdmin()">Cancel</button>
+      </div>
+    </div>
+    <div class="admin-section" id="tab-portfolio">
+      <div id="adminPortfolioList"></div>
+      <button class="admin-add" onclick="addPortfolioItem()">+ Add Portfolio Item</button>
+      <div class="admin-actions">
+        <button class="admin-save" onclick="showToast()">Save Portfolio</button>
+        <button class="admin-close" onclick="closeAdmin()">Cancel</button>
+      </div>
+    </div>
+    <div class="admin-section" id="tab-settings">
+      <div class="admin-field"><label>Hero Headline</label><input type="text" id="admin-heroH" value="We help creators and businesses grow online"></div>
+      <div class="admin-field"><label>Hero Subheadline</label><input type="text" id="admin-heroSub" value="From zero to strong digital presence with content, websites, and strategy"></div>
+      <div class="admin-actions">
+        <button class="admin-save" onclick="applyHeroSettings();showToast()">Save Settings</button>
+        <button class="admin-close" onclick="closeAdmin()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="success-toast" id="toast">✓ Saved successfully!</div>
+
+<script src="shared.js"></script>
+<script>
+// ── HOME-SPECIFIC RENDER ───────────────────────────
+function renderHomeServices() {
+  const grid = document.getElementById('homeServicesGrid');
+  if (!grid) return;
+  grid.innerHTML = siteData.services.map(s => `
+    <div class="service-card reveal" style="display:flex;flex-direction:column">
+      <div class="service-icon">${s.icon}</div>
+      <div class="service-name">${s.name}</div>
+      <div class="service-price">${s.price}</div>
+      <div class="service-desc">${s.desc}</div>
+      <div class="service-card-actions">
+        <button class="btn-buy"      onclick='buyNow(event,${JSON.stringify(s)})'>Buy Now</button>
+        <button class="btn-add-cart" id="ac-${s.id}" onclick='addToCart(event,${JSON.stringify(s)},this)'>Add to Cart</button>
+      </div>
+    </div>`).join('');
+  initReveal();
+}
+
+function renderWhyGrid() {
+  const el = document.getElementById('whyGrid');
+  if (!el) return;
+  el.innerHTML = siteData.whyPoints.map(w => `
+    <div class="why-card reveal">
+      <div class="why-num">${w.num}</div>
+      <div><h4>${w.title}</h4><p>${w.desc}</p></div>
+    </div>`).join('');
+  initReveal();
+}
+
+function buildChart() {
+  const chart = document.getElementById('growthChart');
+  if (!chart) return;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul'];
+  const vals   = [20,35,42,55,68,82,100];
+  chart.innerHTML = months.map((m,i) => `
+    <div style="display:flex;flex-direction:column;align-items:center;flex:1">
+      <div class="bar" style="height:${vals[i]*1.4}px;width:100%">
+        <div class="bar-fill" style="height:${vals[i]}%"></div>
+      </div>
+      <div class="bar-label">${m}</div>
+    </div>`).join('');
+}
+
+function applyHeroSettings() {
+  const h   = document.getElementById('admin-heroH');
+  const sub = document.getElementById('admin-heroSub');
+  if (h)   document.querySelector('.hero h1').innerHTML = h.value;
+  if (sub) document.querySelector('.hero > .hero-content > p').textContent = sub.value;
+}
+
+// ── INIT ──────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderHomeServices();
+  renderWhyGrid();
+  buildChart();
+});
+</script>
+</body>
+</html>
