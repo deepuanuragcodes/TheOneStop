@@ -1,3 +1,20 @@
+// =======================================================
+// ONESTOP — shared.js  (GTM dataLayer events baked in)
+// Every line marked  ← GTM  is a dataLayer push
+// =======================================================
+
+// ── 1. Initialize dataLayer BEFORE GTM snippet ─────────
+window.dataLayer = window.dataLayer || [];          // ← GTM
+function dlPush(obj) { window.dataLayer.push(obj); }// ← GTM
+
+// ── 2. Page view — fires on every page load ────────────
+dlPush({                                            // ← GTM
+  event:      'page_view',
+  page_path:   window.location.pathname,
+  page_title:  document.title,
+  page_type:  'agency_site'
+});
+
 // =================== SHARED DATA ===================
 const siteData = {
   brandName: 'OneStop',
@@ -13,13 +30,13 @@ const siteData = {
     { id: 3, title: 'Startup Brand Film',    desc: 'Cinematic brand video for product launch', category: 'video', emoji: '🎥', bg: '#2e1a1a' },
     { id: 4, title: 'Food Blog Website',     desc: 'Recipe-focused site with clean navigation', category: 'website', emoji: '🍜', bg: '#2e2a1a' },
     { id: 5, title: 'Creator Logo Pack',     desc: 'Complete visual identity for a YouTuber', category: 'design', emoji: '🎨', bg: '#1a1e2e' },
-    { id: 6, title: 'Podcast Reel Edits',    desc: '15 short-form clips for social media growth', category: 'video', emoji: '🎙️', bg: '#2a1a2e' },
+    { id: 6, title: 'Podcast Reel Edits',    desc: '15 short-form clips for social media growth', category: 'video', emoji: '🎙️', bg: '#2a1a2e' }
   ],
   whyPoints: [
     { num: '01', title: 'Results, not just delivery', desc: 'We measure success by your growth, not just the tasks completed. Every move has a purpose.' },
     { num: '02', title: 'Personalized approach',      desc: 'Your brand is unique. We build custom strategies tailored to your goals and audience.' },
     { num: '03', title: 'Fast execution',             desc: 'Ideas lose momentum when delayed. We move quickly to keep your brand ahead.' },
-    { num: '04', title: 'Built for creators',         desc: 'We understand the creator economy. We speak your language and know what works.' },
+    { num: '04', title: 'Built for creators',         desc: 'We understand the creator economy. We speak your language and know what works.' }
   ]
 };
 
@@ -56,18 +73,47 @@ function addToCart(e, service, btn) {
   if (btn) { btn.textContent = 'Added'; btn.classList.add('added'); }
   const cc = document.getElementById('cartCount');
   if (cc) { cc.style.transform = 'scale(1.4)'; setTimeout(() => cc.style.transform = '', 200); }
+
+  dlPush({                                          // ← GTM: add_to_cart
+    event: 'add_to_cart',
+    ecommerce: {
+      currency: 'INR',
+      items: [{ item_id: String(service.id), item_name: service.name, item_category: 'Digital Service', price: 0, quantity: 1 }]
+    }
+  });
+
   openCart();
 }
 
 function buyNow(e, service) {
   e.stopPropagation();
   if (!cart.find(i => i.id === service.id)) cart.push({ ...service });
-  saveCart(); updateCartUI(); openCheckout();
+  saveCart(); updateCartUI();
+
+  dlPush({                                          // ← GTM: buy_now_click
+    event: 'buy_now_click',
+    service_name: service.name,
+    service_id: String(service.id),
+    service_price: service.price
+  });
+
+  openCheckout();
 }
 
 function removeFromCart(id) {
+  const removed = cart.find(i => i.id === id);
   cart = cart.filter(i => i.id !== id);
   saveCart(); updateCartUI(); renderCartItems();
+
+  if (removed) {
+    dlPush({                                        // ← GTM: remove_from_cart
+      event: 'remove_from_cart',
+      ecommerce: {
+        currency: 'INR',
+        items: [{ item_id: String(removed.id), item_name: removed.name, quantity: 1 }]
+      }
+    });
+  }
 }
 
 function updateCartUI() {
@@ -86,9 +132,7 @@ function renderCartItems() {
   const footer = document.getElementById('cartFooter');
   if (!list) return;
   if (cart.length === 0) {
-    list.innerHTML = `<div class="cart-empty"><span class="cart-empty-icon">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-    </span>Your cart is empty.<br>Add a service to get started.</div>`;
+    list.innerHTML = `<div class="cart-empty"><span class="cart-empty-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></span>Your cart is empty.<br>Add a service to get started.</div>`;
     if (footer) footer.style.display = 'none';
     return;
   }
@@ -114,7 +158,17 @@ function openCart() {
   document.getElementById('cartDrawer').classList.add('open');
   document.body.style.overflow = 'hidden';
   renderCartItems();
+
+  dlPush({                                          // ← GTM: view_cart
+    event: 'view_cart',
+    cart_item_count: cart.length,
+    ecommerce: {
+      currency: 'INR',
+      items: cart.map(s => ({ item_id: String(s.id), item_name: s.name, item_category: 'Digital Service', quantity: 1 }))
+    }
+  });
 }
+
 function closeCart() {
   document.getElementById('cartOverlay').classList.remove('open');
   document.getElementById('cartDrawer').classList.remove('open');
@@ -136,7 +190,16 @@ function openCheckout() {
   });
   document.getElementById('checkoutOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  dlPush({                                          // ← GTM: begin_checkout
+    event: 'begin_checkout',
+    ecommerce: {
+      currency: 'INR',
+      items: cart.map(s => ({ item_id: String(s.id), item_name: s.name, item_category: 'Digital Service', quantity: 1 }))
+    }
+  });
 }
+
 function closeCheckout() {
   document.getElementById('checkoutOverlay').classList.remove('open');
   document.body.style.overflow = '';
@@ -159,9 +222,9 @@ function updateCoStep() {
     const dot = document.getElementById(`cdot-${n}`);
     const line = document.getElementById(`cline-${n}`);
     const lbl  = document.getElementById(`clbl-${n}`);
-    if (dot) { dot.className = 'checkout-step-dot' + (n < coStep ? ' done' : n === coStep ? ' active' : ''); dot.textContent = n < coStep ? '✓' : n; }
-    if (line) line.className = 'checkout-step-line' + (n < coStep ? ' done' : '');
-    if (lbl)  lbl.className  = 'checkout-step-lbl'  + (n === coStep ? ' active' : '');
+    if (dot)  { dot.className  = 'checkout-step-dot' + (n < coStep ? ' done' : n === coStep ? ' active' : ''); dot.textContent = n < coStep ? '✓' : n; }
+    if (line)   line.className = 'checkout-step-line' + (n < coStep ? ' done' : '');
+    if (lbl)    lbl.className  = 'checkout-step-lbl'  + (n === coStep ? ' active' : '');
   });
   const titles = ['','Your Details','Payment','Confirm Order'];
   const subs   = ['','Tell us who you are so we can get started.','Choose your preferred payment method.','Review and confirm your order.'];
@@ -176,8 +239,20 @@ function coNext() {
     const fname = document.getElementById('co-fname').value.trim();
     const email = document.getElementById('co-email').value.trim();
     if (!fname || !email) { shakeField(!fname ? 'co-fname' : 'co-email'); return; }
+
+    dlPush({ event: 'checkout_step_complete', checkout_step: 1, step_name: 'customer_details' }); // ← GTM
+
     coStep = 2;
   } else if (coStep === 2) {
+
+    dlPush({                                        // ← GTM: checkout_step_complete step 2
+      event: 'checkout_step_complete',
+      checkout_step: 2,
+      step_name: 'payment_method',
+      payment_type: selectedPayment,
+      ecommerce: { payment_type: selectedPayment }
+    });
+
     coStep = 3;
     const fname = document.getElementById('co-fname').value;
     const lname = document.getElementById('co-lname').value;
@@ -197,12 +272,28 @@ function coNext() {
       btn.disabled = false; coStep = 4;
       const orderId = 'OS-' + Math.floor(100000 + Math.random() * 900000);
       document.getElementById('coOrderId').textContent = `Order #${orderId}`;
+      const fname = document.getElementById('co-fname') ? document.getElementById('co-fname').value : '';
+      const email = document.getElementById('co-email') ? document.getElementById('co-email').value : '';
+
+      dlPush({                                      // ← GTM: purchase
+        event: 'purchase',
+        ecommerce: {
+          transaction_id: orderId,
+          currency: 'INR',
+          value: 0,
+          payment_type: selectedPayment,
+          items: cart.map(s => ({ item_id: String(s.id), item_name: s.name, item_category: 'Digital Service', quantity: 1 }))
+        },
+        user: { name: fname, email: email }
+      });
+
       cart = []; saveCart(); updateCartUI(); updateCoStep();
     }, 1800);
     return;
   }
   updateCoStep();
 }
+
 function coBack() { if (coStep > 1) { coStep--; updateCoStep(); } }
 
 function shakeField(id) {
@@ -285,6 +376,14 @@ function handleSubmit() {
   const btn = document.querySelector('.submit-btn');
   if (!btn) return;
   btn.textContent = 'Sending...'; btn.disabled = true;
+
+  const svc = document.querySelector('.contact-form select');
+  dlPush({                                          // ← GTM: contact_form_submit
+    event: 'contact_form_submit',
+    selected_service: svc ? svc.value : 'unknown',
+    page_path: window.location.pathname
+  });
+
   setTimeout(() => {
     btn.textContent = 'Message Sent!'; btn.style.background = '#25D366';
     setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; btn.disabled = false; }, 3000);
@@ -295,7 +394,6 @@ function handleSubmit() {
 document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   initReveal();
-
   const coOverlay = document.getElementById('checkoutOverlay');
   if (coOverlay) coOverlay.addEventListener('click', e => { if (e.target === coOverlay) closeCheckout(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeCheckout(); closeCart(); } });
