@@ -1,11 +1,20 @@
 // =======================================================
 // ONESTOP — shared.js  (GTM dataLayer events baked in)
 // Every line marked  ← GTM  is a dataLayer push
-// =======================================================
+  whatsapp: '919999999999',
 
 // ── 1. Initialize dataLayer BEFORE GTM snippet ─────────
 window.dataLayer = window.dataLayer || [];          // ← GTM
-function dlPush(obj) { window.dataLayer.push(obj); }// ← GTM
+function dlPush(obj) {
+  // 🧹 Clear previous ecommerce (VERY IMPORTANT for GTM)
+  window.dataLayer.push({ ecommerce: null });
+
+  // 🚀 Push fresh event
+  window.dataLayer.push(obj);
+
+  // 👀 See events in console (for debugging)
+  console.log("🔥 DL EVENT:", obj);
+}
 
 // ── 2. Page view — fires on every page load ────────────
 dlPush({                                            // ← GTM
