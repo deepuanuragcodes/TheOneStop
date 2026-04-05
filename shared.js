@@ -1,12 +1,12 @@
 // =======================================================
-// ONESTOP — shared.js (ONLY DATA LAYER FIXED)
+// ONESTOP — shared.js  (UI SAME + DATA LAYER FIXED)
 // =======================================================
 
 // ── 1. Initialize dataLayer BEFORE GTM snippet ─────────
 window.dataLayer = window.dataLayer || [];
 function dlPush(obj) { window.dataLayer.push(obj); }
 
-// ── HELPERS (ADDED FOR VALUE FIX) ─────────
+// ── HELPERS (ADDED) ─────────
 function getNumericPrice(priceStr) {
   if (!priceStr) return 0;
   return parseFloat(priceStr.replace(/[^\d]/g, '')) || 0;
@@ -29,9 +29,9 @@ const siteData = {
   brandName: 'OneStop',
   whatsapp: '919999999999',
   services: [
-    { id: 1, icon: '🌐', name: 'Website Setup', price: 'Starting ₹5,000', desc: '', includes: [], outcome: '', paymentLink: '' },
-    { id: 2, icon: '📱', name: 'Instagram Growth & Content', price: 'Starting ₹5,000/month', desc: '', includes: [], outcome: '', paymentLink: '' },
-    { id: 3, icon: '🎬', name: 'Video Editing', price: 'Starting ₹2,000', desc: '', includes: [], outcome: '', paymentLink: '' }
+    { id: 1, icon: '🌐', name: 'Website Setup', price: 'Starting ₹5,000', desc: 'Get your business online with a clean, modern, and professional website.', includes: ['Responsive design','SEO basics','Fast delivery','Mobile-first approach'], outcome: 'Your business goes online', paymentLink: '' },
+    { id: 2, icon: '📱', name: 'Instagram Growth & Content', price: 'Starting ₹5,000/month', desc: 'Grow your Instagram.', includes: ['Content planning','Caption writing'], outcome: 'More growth', paymentLink: '' },
+    { id: 3, icon: '🎬', name: 'Video Editing', price: 'Starting ₹2,000', desc: 'High-quality edits.', includes: ['Subtitles','Transitions'], outcome: 'Better content', paymentLink: '' }
   ]
 };
 
@@ -45,7 +45,8 @@ function saveCart() { sessionStorage.setItem('os_cart', JSON.stringify(cart)); }
 // ADD TO CART (FIXED)
 function addToCart(e, service, btn) {
   e.stopPropagation();
-  if (cart.find(i => i.id === service.id)) return;
+  if (cart.find(i => i.id === service.id)) { openCart(); return; }
+
   cart.push({ ...service });
   saveCart();
 
@@ -63,6 +64,8 @@ function addToCart(e, service, btn) {
       }]
     }
   });
+
+  openCart();
 }
 
 // REMOVE FROM CART (FIXED)
@@ -80,6 +83,7 @@ function removeFromCart(id) {
         items: [{
           item_id: String(removed.id),
           item_name: removed.name,
+          price: getNumericPrice(removed.price),
           quantity: 1
         }]
       }
@@ -125,7 +129,7 @@ function openCheckout() {
   });
 }
 
-// PAYMENT STEP (ADDED STANDARD EVENT)
+// PAYMENT (ADDED STANDARD EVENT)
 function selectPayment(type) {
   selectedPayment = type;
 
@@ -154,7 +158,7 @@ function completePurchase(user = {}) {
     ecommerce: {
       transaction_id: orderId,
       currency: 'INR',
-      value: getCartValue(cart), // FIXED (was 0 ❌)
+      value: getCartValue(cart),
       tax: 0,
       shipping: 0,
       payment_type: selectedPayment,
@@ -173,7 +177,7 @@ function completePurchase(user = {}) {
   saveCart();
 }
 
-// CONTACT FORM (UPGRADED)
+// CONTACT FORM
 function handleSubmit() {
   dlPush({
     event: 'generate_lead',
